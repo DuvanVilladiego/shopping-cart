@@ -11,7 +11,7 @@ using shopping_cart;
 namespace shopping_cart.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220411231414_initial")]
+    [Migration("20220412054454_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,8 +35,11 @@ namespace shopping_cart.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("integer(64)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

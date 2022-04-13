@@ -3,22 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace shopping_cart.Models
 {
-    public class Product
+    public class Sales
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(100)")]
-        public string Name { get; set; }
+        public string Customername { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar(100)")]
+        public string Products { get; set; }
 
         [Required]
         [Column(TypeName = "float")]
-        public float Price { get; set; }
-
-        [Required]
-        [Column(TypeName = "int")]
-        public int Stock { get; set; }
+        public int Total { get; set; }
 
 
     }
