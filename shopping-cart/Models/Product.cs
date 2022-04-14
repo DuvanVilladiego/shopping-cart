@@ -13,11 +13,11 @@ namespace shopping_cart.Models
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "float")]
+        [Column(TypeName = "float(200)")]
         public float Price { get; set; }
 
         [Required]
-        [Column(TypeName = "int")]
+        [Column(TypeName = "int(200)")]
         public int Stock { get; set; }
 
 

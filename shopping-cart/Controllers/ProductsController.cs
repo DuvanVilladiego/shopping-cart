@@ -17,9 +17,8 @@ namespace shopping_cart.Controllers
         //Get All Products
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
-        {
+        { 
             var products = await applicationDbContext.Products.ToListAsync();
-            Console.WriteLine("With the default new line characters:");
             return Ok(products);
         }
 
@@ -34,13 +33,15 @@ namespace shopping_cart.Controllers
             {
                 return Ok(product);
             }
-            return NotFound("Products not found");
+            return NotFound("Product not found");
         }
 
         //Add Product
         [HttpPost]
         public async Task<IActionResult> AddProduct([FromBody] Product product)
         {
+            var existProduct = await applicationDbContext.Products.FirstOrDefaultAsync(x => x.Name == product.Name);
+            if (existProduct != null) { return BadRequest("The Product " + product.Name + " already exist"); }
             product.Id = new int();
             await applicationDbContext.Products.AddAsync(product);
             await applicationDbContext.SaveChangesAsync();

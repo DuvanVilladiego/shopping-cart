@@ -12,5 +12,6 @@ namespace shopping_cart
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Sale> Sales { get; set; }
     }
 }

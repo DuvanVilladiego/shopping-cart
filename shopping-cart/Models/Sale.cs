@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace shopping_cart.Models
 {
-    public class Sales
+    public class Sale
     {
         [Key]
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace shopping_cart.Models
         public string Products { get; set; }
 
         [Required]
-        [Column(TypeName = "float")]
+        [Column(TypeName = "float(200)")]
         public int Total { get; set; }
 
 

@@ -11,8 +11,8 @@ using shopping_cart;
 namespace shopping_cart.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220412054454_initial")]
-    partial class initial
+    [Migration("20220414051320_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,30 @@ namespace shopping_cart.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("shopping_cart.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Customername")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Products")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sales");
                 });
 #pragma warning restore 612, 618
         }

@@ -43,6 +43,30 @@ namespace shopping_cart.Migrations
 
                     b.ToTable("Products");
                 });
+
+            modelBuilder.Entity("shopping_cart.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Customername")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Products")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sales");
+                });
 #pragma warning restore 612, 618
         }
     }
