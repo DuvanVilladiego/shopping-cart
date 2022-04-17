@@ -17,7 +17,7 @@ namespace shopping_cart.Models
         public string Products { get; set; }
 
         [Required]
-        [Column(TypeName = "float(200)")]
+        [Column(TypeName = "float")]
         public int Total { get; set; }
 
 

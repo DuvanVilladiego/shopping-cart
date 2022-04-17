@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  cartActive  = false;
   isExpanded = false;
 
   collapse() {
@@ -14,5 +15,9 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  goToCart() {
+    this.cartActive = !this.cartActive;
   }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using shopping_cart.Models;
+using shopping_cart.Controllers;
 
 namespace shopping_cart.Controllers
 {
@@ -40,6 +41,19 @@ namespace shopping_cart.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSale([FromBody] Sale sale)
         {
+            string[] products = sale.Products.Split(",");
+            for (int i = 0; i < products.Length; i++)
+            {
+                var product = await applicationDbContext.Products.FirstOrDefaultAsync(x => x.Name == products[i]);
+                if (product == null) { return BadRequest("Product not exist"); }
+                if (product.Stock <= 0) { return BadRequest("Insufficient stock for make the sale"); }
+            }
+            for (int i = 0; i < products.Length; i++)
+            {
+                var productStock = await applicationDbContext.Products.FirstOrDefaultAsync(x => x.Name == products[i]);
+                productStock.Stock -= 1;
+                await applicationDbContext.SaveChangesAsync();
+            }
             if(sale.Total <= 0){ return BadRequest("Missing the Total Field"); }
             sale.Id = new int();
             await applicationDbContext.Sales.AddAsync(sale);

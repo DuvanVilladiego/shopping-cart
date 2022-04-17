@@ -1,0 +1,18 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Carrito de compras</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" (click)="log()"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="list-group" *ngFor="let product of productsList.cart">
+        <div class="list-group-item list-group-item-action" style="margin:5px 0px" aria-current="true">
+        <img src="{{product.image}}" class="img-fluid" alt="{{product.name}}">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{product.name}}</h5>
+            <small>${{product.price}}</small>
+          </div>
+          <i role="button" (click)="deleteItem(product)" class="fa-solid fa-trash">Eliminar</i>
+        </div>
+      </div>
+  </div>
+</div>

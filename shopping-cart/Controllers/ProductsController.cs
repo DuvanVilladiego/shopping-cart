@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using shopping_cart.Models;
+using System.Collections;
 
 namespace shopping_cart.Controllers
 {
@@ -20,6 +21,18 @@ namespace shopping_cart.Controllers
         { 
             var products = await applicationDbContext.Products.ToListAsync();
             return Ok(products);
+        }
+
+        //Get All Category
+        [HttpGet]
+        [Route("categories")]
+        public async Task<IActionResult> GetAllCategory()
+        {
+            var products = await applicationDbContext.Products.ToListAsync();
+            Stack<String> category = new Stack<String>();
+            products.ForEach(x => {if(!category.Contains(x.Category)){category.Push(x.Category);}});
+            Console.WriteLine(category);
+            return Ok(category);
         }
 
         //Get Single Product

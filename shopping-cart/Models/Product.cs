@@ -13,13 +13,19 @@ namespace shopping_cart.Models
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "float(200)")]
+        [Column(TypeName = "float")]
         public float Price { get; set; }
 
         [Required]
-        [Column(TypeName = "int(200)")]
+        [Column(TypeName = "int")]
         public int Stock { get; set; }
 
+        [Required]
+        [Column(TypeName = "varchar(100)")]
+        public string Category { get; set; }
 
+        [Required]
+        [Column(TypeName = "varchar(100)")]
+        public string Image { get; set; }
     }
 }
