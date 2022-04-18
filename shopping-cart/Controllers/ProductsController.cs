@@ -31,7 +31,6 @@ namespace shopping_cart.Controllers
             var products = await applicationDbContext.Products.ToListAsync();
             Stack<String> category = new Stack<String>();
             products.ForEach(x => {if(!category.Contains(x.Category)){category.Push(x.Category);}});
-            Console.WriteLine(category);
             return Ok(category);
         }
 

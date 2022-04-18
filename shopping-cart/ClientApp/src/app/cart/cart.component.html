@@ -1,7 +1,6 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
     <h5 id="offcanvasRightLabel">Carrito de compras</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" (click)="log()"></button>
   </div>
   <div class="offcanvas-body">
     <div class="list-group" *ngFor="let product of productsList.cart">
@@ -11,8 +10,44 @@
             <h5 class="mb-1">{{product.name}}</h5>
             <small>${{product.price}}</small>
           </div>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Cantidad: {{product.quantity}}</h5>
+          </div>
           <i role="button" (click)="deleteItem(product)" class="fa-solid fa-trash">Eliminar</i>
         </div>
       </div>
   </div>
+  <div class="alert alert-success" role="alert" style="border-radius: 0%; margin-bottom: 0;">
+    Total: ${{totalCartPrice()}}
+  </div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-radius:0;" data-bs-whatever="@mdo">Comprar!</button>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmar Compra</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success" role="alert" *ngIf="successMessage!=''">
+                {{successMessage}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errMessage!=''">
+                {{errMessage}}
+            </div>
+          <form>
+            <div class="form-floating mb-3">
+                <input [(ngModel)]="saleBody.customername" [ngModelOptions]="{standalone: true}" type="name" class="form-control" id="floatingInput" placeholder="Josep">
+                <label for="floatingInput">Nombre</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="generateSale()">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -20,4 +20,8 @@ export class NavMenuComponent {
   goToCart() {
     this.cartActive = !this.cartActive;
   }
+
+  location() {
+    return window.location.pathname;
+  }
 }

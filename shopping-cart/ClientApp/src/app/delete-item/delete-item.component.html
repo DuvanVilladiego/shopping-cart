@@ -1,0 +1,35 @@
+<div class="list-group-item list-group-item-action" style="margin:5px 0px; border:1px solid rgb(177, 177, 177)" aria-current="true" role="button" data-bs-toggle="modal" data-bs-target="#deleteItemModal" data-bs-whatever="@getbootstrap">
+    <div class="card-body">
+      <h5 class="card-title">Eliminar Productos</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Eliminar un producto existente del inventario</h6>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" *ngIf="successMessage!=''">
+            {{successMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errMessage!=''">
+            {{errMessage}}
+        </div>
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input [(ngModel)]="itemForDelete.Name" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="deleteItem()">Agregar Producto</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,22 @@
-<div class="container-fluid d-flex flex-row" style="overflow-x: scroll;">
-  <a *ngFor="let category of categoriesList" class="btn btn-primary text-wrap" style="width: 100%; padding: 5px; margin:10px 5px;" role="button">
-    {{category}}
-  </a>
+<div>
+  <p style=" margin-bottom: -3px;">Filtre su busqueda por categoria:</p>
+  <div class="container-fluid d-flex flex-row" style="overflow-x: scroll;">
+    <a *ngFor="let category of categoriesList" (click)="applyFilter(category)" class="btn btn-primary text-wrap" style="width: 100%; padding: 5px; margin:10px 5px;" role="button">
+      {{category}}
+    </a>
+  </div>
 </div>
 <div class="container-fluid d-flex flex-row flex-wrap justify-content-center">
-  <div *ngFor="let product of productsList">
+  <div *ngFor="let product of filterList">
     <div class="card justify-content-center" style="width: 18rem; margin: 10px;">
       <img src="{{product.image}}" class="card-img-top" alt="{{product.name}}">
       <div class="card-body">
         <h5 class="card-title">{{product.name}}</h5>
         <h5>${{product.price}}</h5>
-        <p >Disponible: {{product.stock!=0? product.stock:"Agotado"}}</p>
-        <a class="btn btn-primary" (click)="addtocart(product)">Agregar en el carrito</a>
+        <p> {{product.stock!=0? "Disponible: " + product.stock:"Agotado"}}</p>
+        <a *ngIf="product.stock!=0" class="btn btn-primary" (click)="addtocart(product)">Agregar en el carrito</a>
       </div>
     </div>
   </div>
 </div>
-<app-cart [productsList]="{cart}" ></app-cart>
+<app-cart [productsList]="{cart}" [updateProductsStock]="{restoreStock}"></app-cart>

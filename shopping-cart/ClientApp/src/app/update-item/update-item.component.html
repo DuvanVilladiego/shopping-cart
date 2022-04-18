@@ -1,0 +1,55 @@
+<div class="list-group-item list-group-item-action" style="margin:5px 0px; border:1px solid rgb(177, 177, 177)" aria-current="true" role="button" data-bs-toggle="modal" data-bs-target="#updateItemModal" data-bs-whatever="@getbootstrap">
+    <div class="card-body">
+      <h5 class="card-title">Actualizar Productos</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Actualizar producto del inventario</h6>
+    </div>
+</div>
+
+<div class="modal fade" id="updateItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" role="alert" *ngIf="successMessage!=''">
+            {{successMessage}}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errMessage!=''">
+            {{errMessage}}
+        </div>
+        <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Id del producto a actualizar:</label>
+              <input [(ngModel)]="itemForUpdate.id" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+            </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input [(ngModel)]="itemForUpdate.Name" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Cantidad en Stock:</label>
+            <input [(ngModel)]="itemForUpdate.Stock" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Categoria:</label>
+            <input [(ngModel)]="itemForUpdate.Category" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Imagen(url):</label>
+            <input [(ngModel)]="itemForUpdate.Image" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Precio:</label>
+            <input [(ngModel)]="itemForUpdate.Price" type="text" class="form-control" id="recipient-name" [ngModelOptions]="{standalone: true}" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button data-bs-toggle="modal" data-bs-target="#addUpdatedItemModal" data-bs-whatever="@getbootstrap" type="button" id="closeUpdateModal" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="updateProduct()">Actualizar Producto</button>
+      </div>
+    </div>
+  </div>
+</div>

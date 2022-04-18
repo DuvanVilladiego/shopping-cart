@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <i class="fa-solid fa-cart-shopping"></i>
-            <a class="nav-link text-white " [routerLink]="['/']" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <a class="nav-link text-white " [routerLink]="['/']" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" *ngIf="location()=='/'">
               Carrito de compras</a
             >
           </li>

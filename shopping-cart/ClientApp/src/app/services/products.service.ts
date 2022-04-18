@@ -16,4 +16,16 @@ export class ProductsService {
     return this.http.get(this.env + '/api/products');
   }
 
+  addProduct(product:any) {
+    return this.http.post(this.env + '/api/products', product);
+  }
+
+  deleteProduct(product:any) {
+    return this.http.delete(this.env + '/api/products/'+ product.id);
+  }
+
+  updateProduct(product:any) {
+    return this.http.put(this.env + '/api/products/'+ product.id, product);
+  }
+
 }

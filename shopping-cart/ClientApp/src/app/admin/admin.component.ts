@@ -7,4 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminComponent {
 
+  getLocation() {
+    return window.location.href;
+  }
+
+  redirectToListItems() {
+    window.location.href = this.getLocation() + '/list-full-item-data';
+  }
 }
